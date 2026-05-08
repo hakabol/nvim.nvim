@@ -1,8 +1,10 @@
--- You can add your own plugins here or in other files in this directory!
---  I promise not to create any merge conflicts in this directory :)
---
--- See the kickstart.nvim README for more information
-
----@module 'lazy'
----@type LazySpec
-return {}
+return {
+  require 'custom.plugins.basics',
+  require 'custom.plugins.colorscheme',
+  require 'custom.plugins.alpha',
+  require 'custom.plugins.smear',
+  require 'custom.plugins.cmdline',
+  {
+    'ThePrimeagen/vim-be-good',
+  },
+}
