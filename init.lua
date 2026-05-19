@@ -622,6 +622,9 @@ require('lazy').setup({
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
 
+        html = {},
+        cssls = {},
+
         pylsp = {
           settings = {
             pylsp = {
@@ -684,7 +687,8 @@ require('lazy').setup({
       -- You can press `g?` for help in this menu.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        -- You can add other tools here that you want Mason to install
+        'html-lsp',
+        'css-lsp',
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -873,7 +877,7 @@ require('lazy').setup({
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter-intro`
     config = function()
       -- ensure basic parser are installed
-      local parsers = { 'python', 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
+      local parsers = { 'python', 'rust', 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
       require('nvim-treesitter').install(parsers)
 
       ---@param buf integer
@@ -886,8 +890,11 @@ require('lazy').setup({
 
         -- enables treesitter based folds
         -- for more info on folds see `:help folds`
-        -- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-        -- vim.wo.foldmethod = 'expr'
+        vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+        vim.wo.foldmethod = 'expr'
+
+        vim.o.foldenable = true
+        vim.o.foldlevel = 99
 
         -- check if treesitter indentation is available for this language, and if so enable it
         -- in case there is no indent query, the indentexpr will fallback to the vim's built in one

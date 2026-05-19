@@ -4,7 +4,5 @@ return {
   require 'custom.plugins.alpha',
   require 'custom.plugins.smear',
   require 'custom.plugins.cmdline',
-  {
-    'ThePrimeagen/vim-be-good',
-  },
+  require 'custom.plugins.image_support',
 }
