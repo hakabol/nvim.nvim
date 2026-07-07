@@ -5,4 +5,5 @@ return {
   require 'custom.plugins.smear',
   require 'custom.plugins.cmdline',
   require 'custom.plugins.image_support',
+  require 'custom.plugins.notebook',
 }
