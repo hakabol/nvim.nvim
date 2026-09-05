@@ -612,11 +612,8 @@ require('lazy').setup({
       --  See `:help lsp-config` for information about keys and how to configure
       ---@type table<string, vim.lsp.Config>
       local servers = {
-<<<<<<< HEAD
         asm_lsp = {},
-=======
         arduino_language_server = {},
->>>>>>> old-conf
         --kotlin_language_server = {},
         clangd = {},
         --gopls = {},
