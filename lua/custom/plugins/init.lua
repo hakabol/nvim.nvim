@@ -6,4 +6,6 @@ return {
   require 'custom.plugins.cmdline',
   require 'custom.plugins.image_support',
   require 'custom.plugins.notebook',
+  require 'custom.plugins.undotree',
+  require 'custom.plugins.git',
 }

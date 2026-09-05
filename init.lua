@@ -424,11 +424,11 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
-      vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+      vim.keymap.set('n', '<leader>so', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader>sc', builtin.commands, { desc = '[S]earch [C]ommands' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
-      vim.keymap.set('n', '<leader>so', '<cmd>Telescope oldfiles cwd_only=true<CR>', { desc = '[S]earch recent files in current pr[O]ject' })
+      vim.keymap.set('n', '<leader>s.', '<cmd>Telescope oldfiles cwd_only=true<CR>', { desc = '[S]earch recent files in current pr[O]ject' })
       -- This runs on LSP attach per buffer (see main LSP attach function in 'neovim/nvim-lspconfig' config for more info,
       -- it is better explained there). This allows easily switching between pickers if you prefer using something else!
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -612,6 +612,7 @@ require('lazy').setup({
       --  See `:help lsp-config` for information about keys and how to configure
       ---@type table<string, vim.lsp.Config>
       local servers = {
+        asm_lsp = {},
         --kotlin_language_server = {},
         clangd = {},
         --gopls = {},
@@ -1007,3 +1008,13 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+local mark = require 'harpoon.mark'
+local ui = require 'harpoon.ui'
+
+vim.keymap.set('n', '<leader>am', mark.add_file)
+vim.keymap.set('n', '<leader>au', ui.toggle_quick_menu)
+vim.keymap.set('n', '<leader>a1', function() ui.nav_file(1) end)
+vim.keymap.set('n', '<leader>a2', function() ui.nav_file(2) end)
+vim.keymap.set('n', '<leader>a3', function() ui.nav_file(3) end)
+vim.keymap.set('n', '<leader>a4', function() ui.nav_file(4) end)
