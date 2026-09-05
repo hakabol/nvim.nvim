@@ -8,4 +8,5 @@ return {
   require 'custom.plugins.notebook',
   require 'custom.plugins.undotree',
   require 'custom.plugins.git',
+  require 'custom.plugins.arduino',
 }
