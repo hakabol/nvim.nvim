@@ -33,7 +33,7 @@ after installing all the dependencies you can procede to the installation
 
 2. move your old config somewhere else
 
-3. clone the repo
+3. clone the repo using the command ;
 
 ```bash
 git clone https://github.com/hakabol/nvim.nvim nvim
