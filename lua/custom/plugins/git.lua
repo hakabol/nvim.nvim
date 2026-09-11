@@ -1,24 +1,12 @@
 return {
   {
-    'NeogitOrg/neogit',
-    lazy = true,
+    dir = '~/git-nvim',
     dependencies = {
-      -- Only one of these is needed.
-      'sindrets/diffview.nvim', -- optional
-      'esmuellert/codediff.nvim', -- optional
-
-      -- For a custom log pager
-      'm00qek/baleia.nvim', -- optional
-
-      -- Only one of these is needed.
-      'nvim-telescope/telescope.nvim', -- optional
-      'ibhagwan/fzf-lua', -- optional
-      'nvim-mini/mini.pick', -- optional
-      'folke/snacks.nvim', -- optional
+      'm00qek/baleia.nvim',
+      'lewis6991/gitsigns.nvim',
+      'barrettruth/diffs.nvim',
     },
-    cmd = 'Neogit',
-    keys = {
-      { '<leader>gg', '<cmd>Neogit<cr>', desc = 'Show Neogit UI' },
-    },
+
+    config = function() require('git-nvim').setup() end,
   },
 }

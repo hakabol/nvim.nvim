@@ -1,3 +1,4 @@
+--idk
 --[[
 
 =====================================================================
@@ -106,6 +107,7 @@ vim.g.have_nerd_font = true
 -- Make line numbers default
 vim.o.number = true
 vim.o.relativenumber = true
+vim.o.fillchars = 'eob: '
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
 -- vim.o.relativenumber = true
@@ -1019,3 +1021,7 @@ vim.keymap.set('n', '<leader>m1', function() ui.nav_file(1) end)
 vim.keymap.set('n', '<leader>m2', function() ui.nav_file(2) end)
 vim.keymap.set('n', '<leader>m3', function() ui.nav_file(3) end)
 vim.keymap.set('n', '<leader>m4', function() ui.nav_file(4) end)
+
+vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
+
+vim.cmd.colorscheme 'catppuccin-mocha'
