@@ -15,4 +15,5 @@ return {
   require 'custom.plugins.cmp',
   require 'custom.plugins.neorg',
   require 'custom.plugins.persistance',
+  require 'custom.plugins.cheat',
 }

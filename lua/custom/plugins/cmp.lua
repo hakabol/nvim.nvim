@@ -13,12 +13,19 @@ return {
         completion = {
           autocomplete = {
             cmp.TriggerEvent.TextChanged,
+            cmp.TriggerEvent.InsertEnter,
           },
         },
       }
 
       -- : command-line completion
       cmp.setup.cmdline(':', {
+        completion = {
+          autocomplete = {
+            cmp.TriggerEvent.TextChanged,
+            cmp.TriggerEvent.InsertEnter,
+          },
+        },
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({
           { name = 'path' },
@@ -29,6 +36,12 @@ return {
 
       -- / and ? search completion
       cmp.setup.cmdline({ '/', '?' }, {
+        completion = {
+          autocomplete = {
+            cmp.TriggerEvent.TextChanged,
+            cmp.TriggerEvent.InsertEnter,
+          },
+        },
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
           { name = 'buffer' },

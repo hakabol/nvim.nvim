@@ -614,7 +614,7 @@ require('lazy').setup({
       --  See `:help lsp-config` for information about keys and how to configure
       ---@type table<string, vim.lsp.Config>
       local servers = {
-        asm_lsp = {},
+        --asm_lsp = {},
         arduino_language_server = {},
         --kotlin_language_server = {},
         clangd = {},
@@ -652,7 +652,7 @@ require('lazy').setup({
         -- Special Lua Config, as recommended by neovim help docs
         lua_ls = {
           on_init = function(client)
-            client.server_capabilities.documentFormattingProvider = false -- Disable formatting (formatting is done by stylua)
+            client.server_capabilities.documentFormattingProvider = false
 
             if client.workspace_folders then
               local path = client.workspace_folders[1].name
@@ -664,21 +664,28 @@ require('lazy').setup({
                 version = 'LuaJIT',
                 path = { 'lua/?.lua', 'lua/?/init.lua' },
               },
+
               workspace = {
                 checkThirdParty = false,
-                -- NOTE: this is a lot slower and will cause issues when working on your own configuration.
-                --  See https://github.com/neovim/nvim-lspconfig/issues/3189
+
                 library = vim.tbl_extend('force', vim.api.nvim_get_runtime_file('', true), {
                   '${3rd}/luv/library',
                   '${3rd}/busted/library',
+                  '/usr/share/hypr/stubs',
                 }),
               },
             })
           end,
-          ---@type lspconfig.settings.lua_ls
+
           settings = {
             Lua = {
-              format = { enable = false }, -- Disable formatting (formatting is done by stylua)
+              format = {
+                enable = false,
+              },
+
+              diagnostics = {
+                globals = { 'vim', 'hl' },
+              },
             },
           },
         },
@@ -1025,3 +1032,5 @@ vim.keymap.set('n', '<leader>m4', function() ui.nav_file(4) end)
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
 vim.cmd.colorscheme 'catppuccin-mocha'
+
+-- Hyprlang LSP
